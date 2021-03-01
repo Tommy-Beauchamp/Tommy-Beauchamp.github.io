@@ -1,6 +1,8 @@
-## What Will You Find Here?
+## Welcome to my Portfolio!
 
-You can use the [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+Here you will find a mix of various personal projects I have worked on. I deeply enjoy mathematics and am trying to create algorithms that solve different problems, limits, derivatives, and integration. These codes also will show graphs where possible to help a user visualize the calculated quantities. There are also some other projects that I have put here just for fun. Have a look! You are welcome to use and modify these codes however you wish. 
+
+## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
