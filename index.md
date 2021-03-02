@@ -60,6 +60,8 @@ plt.show()
 
 [Link](url) and ![Image](src)
 ```
+Refer to matplotlib documentation for further graph customization:
+https://matplotlib.org/stable/contents.html
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
