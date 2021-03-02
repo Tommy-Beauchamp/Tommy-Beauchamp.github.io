@@ -4,7 +4,7 @@ Hi there! My name is Tommy and I enjoy programming, with a particular interest i
 
 ## Function Graphing
 
-The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This can be tedious so a calculator certainly comes in handy. Not only that, but knowing what a function graphically looks like can be powerful for intuitive understanding. Graphing will be utilized in the following codes so this is a good starting point for someone new to coding.
+The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This can be tedious so a calculator certainly comes in handy. Not only that, but knowing what a function graphically looks like can be a powerful tool for intuitive understanding. Graphing will be utilized in the following codes so this is a good starting point for someone new to coding.
 
 ```markdown
 import math
