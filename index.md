@@ -9,26 +9,16 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-                                              # input the function of a single variable that you wish to graph
 def func_calc(x):
-    return math.sqrt(x)                       # This specifies a function and allows it to recieve 
-                                              # multiple inputs with function calls
+    return math.sqrt(x)
 
-x_start = 0                                   # Specify a domain with x_start to x_end
+x_start = 0
 x_end = 9
-
-y_values = []                                 # Creates an empty list to hold the calculated 
-                                              # y-values for each point in the domain
-
-x_values = np.arange(x_start, x_end, 0.1)     # Creates a list of x-values in a numpy array
-                                              # based on the previously stated domain
-                                              # third argument tells numpy array how to increment
+y_values = []                               
+x_values = np.arange(x_start, x_end, 0.1)
 
 for element in x_values:
-    y_values.append(func_calc(element))       # This for loop looks at each of the elements
-                                              # in the x-value array and calculates the function
-                                              # value at each of those points
-                                              # calculated values appended to y-value list
+    y_values.append(func_calc(element))
 
 plt.plot(x_values, y_values, 'b', label='Function Graph')
 plt.xlabel("x")
