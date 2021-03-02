@@ -34,7 +34,7 @@ Refer to [matplotlib documentation](https://matplotlib.org/stable/contents.html)
 
 When limits are first introduced informally, we aren't given the toolkit to evaluate them analytically with our algebra tricks. This leaves students with either a graphical analysis or a numerical method. If you're anything like me, you know how annoying it can be to create the numerical tables by hand to see what values our function tends towards as we approach some input value. This project was born out of that frustration. 
 
-The user specifies a function, an input value to approach, how many decimals they want to have their table go to (3 decimals would be something like 11.9, 11.99, 11.999), and then a domain over which they want to graph the function. If the function possesses a discontinuity at the limit value, the code will recognize that and remove the point from the graphing process. The result prints the left and right hand limit values and also shows a graph with either the limit value if it is defined in the function's domain or the left and right limits.
+The user specifies a function, an input value to approach, how many decimals they want to have their table go to (3 decimals in this case would be 0.1, 0.01, and 0.001 from the right of 0), and then a domain over which they want to graph the function. If the function possesses a discontinuity at the limit value, the code will recognize this and remove the point from the graphing process. The result prints the left and right hand limit values to the console and then shows a graph with either the limit value, or the left and right limits near the input of interest.
 
 ```markdown
 import math
@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def func_calc(x):
-    return (abs(x + 1) - abs(x - 1))/(x)
+    return x ** 2
 
 
 def left_limits(x):
@@ -69,12 +69,11 @@ def right_limits(x):
     return right_result
 
 limit_point = 0
-desired_precision = 4
+desired_precision = 3
 
-x_start = -5.99
-x_end = 6
+x_start = -1.99
+x_end = 2
 y_values = []
-m = 0
 
 x_values = np.arange(x_start, x_end, 0.01)
 
