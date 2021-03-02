@@ -28,6 +28,6 @@ plt.ylabel("f(x)")
 plt.legend()
 plt.show()
 ```
-Refer to matplotlib [documentation](https://matplotlib.org/stable/contents.html) for further graph customization
+Refer to [matplotlib documentation](https://matplotlib.org/stable/contents.html) for further graph customization.
 
 ## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
