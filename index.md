@@ -2,7 +2,9 @@
 
 Hi there! My name is Tommy and I enjoy programming, with a particular interest in object-oriented programming. Here you will find a mix of various personal projects I have created. I deeply enjoy mathematics and am trying to create algorithms that solve different problems concerning limits, derivatives, and integration. These codes will also show graphs where possible to help a user visualize the calculated quantities. There are also some other projects that I have put here just for fun. Have a look! You are welcome to use and modify any of these codes however you wish.
 
-## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
+## Function Graphing
+
+The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This can be tedious so a calculator certainly comes in handy. Not only that, but knowing what a function graphically looks like can be powerful for intuitive understanding. Graphing will be utilized in the following codes so this is a good starting point for someone new to coding.
 
 ```markdown
 import math
