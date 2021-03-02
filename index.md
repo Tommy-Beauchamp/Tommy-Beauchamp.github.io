@@ -12,7 +12,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 
 ```markdown
 
-import math
+`import math
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -41,10 +41,7 @@ plt.plot(x_values, y_values, 'b', label='Function Graph')
 plt.xlabel("x")
 plt.ylabel("f(x)")
 plt.legend()
-plt.show()
-
-    # Refer to matplotlib documentation for further graph customization
-    # https://matplotlib.org/stable/contents.html
+plt.show()`
 
 # Header 1
 ## Header 2
