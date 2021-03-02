@@ -16,13 +16,10 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-# input the function of a single variable that you wish to graph
-# math is imported for access to more functions
-
+                                              # input the function of a single variable that you wish to graph
 def func_calc(x):
-    return math.sqrt(x)
-# This specifies a function and allows it to recieve multiple inputs with function calls
-
+    return math.sqrt(x)                       # This specifies a function and allows it to recieve 
+                                              # multiple inputs with function calls
 
 x_start = 0                                   # Specify a domain with x_start to x_end
 x_end = 9
@@ -46,8 +43,8 @@ plt.ylabel("f(x)")
 plt.legend()
 plt.show()
 
-# Refer to matplotlib documentation for further graph customization
-# https://matplotlib.org/stable/contents.html
+    # Refer to matplotlib documentation for further graph customization
+    # https://matplotlib.org/stable/contents.html
 
 # Header 1
 ## Header 2
