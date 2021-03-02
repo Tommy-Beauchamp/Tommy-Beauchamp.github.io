@@ -20,17 +20,17 @@ import numpy as np
 # math is imported for access to more functions
 
 def func_calc(x):
-    return math.exp(x)
+    return math.sqrt(x)
 # This specifies a function and allows it to recieve multiple inputs with function calls
 
 
 x_start = 0                                   # Specify a domain with x_start to x_end
-x_end = 2
+x_end = 9
 
 y_values = []                                 # Creates an empty list to hold the calculated 
                                               # y-values for each point in the domain
 
-x_values = np.arange(x_start, x_end, 0.1)   # Creates a list of x-values in a numpy array
+x_values = np.arange(x_start, x_end, 0.1)     # Creates a list of x-values in a numpy array
                                               # based on the previously stated domain
                                               # third argument tells numpy array how to increment
 
