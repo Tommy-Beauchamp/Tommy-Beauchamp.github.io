@@ -104,4 +104,91 @@ plt.legend()
 plt.show()
 ```
 
+## Experimental Physics Curve Fitting
+
+The following is a curve fitting code I wrote for an experiment I conducted to measure the lifetime of muons as they descend to the surface from our upper atmosphere. This code utilizes scipy to fit a model to a scatter plot and everything is plotted on a single graph using matplotlib. I have annotated this code with comments and have also included attached the text document with the raw data I used for the fit. Physics may find the template of this fitting code useful for other experiments they wish to conduct as the process is very much the same: load your raw data, sort the respective values into lists and then fit a scatter plot of that data to a desired model. As always, feel to use and modify this code as you see "fit".
+
+```markdown
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+# Exponential Decay of Lifetime Model
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+# Exponential Decay of Lifetime Model
+
+def func(x, a, b, c):
+    return a*np.exp(-x/b)+c
+
+Bins = 25 # Number of histogram bins
+
+lifetime_array = [] # List to hold all recorded decay times
+discriminator_array = [] # Certain times are used for the fit
+
+sigma_array = [] # List to hold error calculations
+
+f = open("MuonLongData.txt", 'r') # open file of interest
+
+# sort the values in the file into a large list
+
+for element in f.readlines():
+    lifetime_array.append(int(element))
+
+# pick only desired time values and sort into smaller list
+
+for data in lifetime_array:
+    if data < 40000:
+        discriminator_array.append(data)
+
+# get number of counts and bin edges in each bin from histogram and print for verification
+
+counts, bin_edges = np.histogram(discriminator_array, bins=Bins)
+
+# sort count numbers and bin edges into an array
+
+xBins = bin_edges
+xData = np.array(xBins)
+xData = np.delete(xData, 0)  # using the bin edges creates one more x-value than data points
+xData = np.delete(xData, -1) # the first value is thrown away and the last x-value omitted
+yData = np.array(counts)
+yData = np.delete(yData, 0)
+square_root_counts = np.sqrt(yData)
+sigma_array = yData/square_root_counts # Weights the data points, according to number of counts
+
+# make a guess at parameters a, b, c
+
+InitialGuess = [1500, 200, 0.0]
+
+plt.scatter(xData, yData, s=15, c='red', label='Experimental Data: Counts per Bin')
+plt.xlabel('Time (ns)')
+plt.ylabel('Counts')
+plt.yscale('log') # For better viewing
+
+popt, pcov = curve_fit(func, xData, yData, InitialGuess, sigma=sigma_array, absolute_sigma=True) # Fitting Tool
+
+print(popt) # Fit Parameters
+print(pcov) # Variance of Fit Parameters
+print(np.sqrt(np.diag(pcov))) # Standard Error of Fit Parameters
+
+xFit = np.arange(0.0, 20000, 100) # Domain for a fitting graph
+plt.plot(xFit, func(xFit, *popt), 'g', label='Weighted Fit')
+
+# Error Bars
+
+yerror = sigma_array
+plt.errorbar(xData, yData, yerr=yerror, fmt=' ', c='black')
+plt.xlabel('Time (ns)')
+plt.ylabel('Counts')
+plt.legend()
+plt.show()
+
+f.close()
+```
+[MuonLongData.txt](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/files/6077130/MuonLongData.txt)
+
+
 ## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
