@@ -106,7 +106,7 @@ plt.show()
 
 ## Experimental Physics Curve Fitting
 
-The following is a curve fitting code I wrote for an experiment I conducted to measure the lifetime of muons as they descend to the surface from our upper atmosphere. This code utilizes scipy to fit a model to a scatter plot and everything is plotted on a single graph using matplotlib. I have annotated this code with comments and have also included attached the text document with the raw data I used for the fit. Physics may find the template of this fitting code useful for other experiments they wish to conduct as the process is very much the same: load your raw data, sort the respective values into lists and then fit a scatter plot of that data to a desired model. As always, feel to use and modify this code as you see "fit".
+The following is a curve fitting code I wrote for an experiment I conducted to measure the lifetime of muons as they descend to the surface from Earth's upper atmosphere. This code utilizes scipy to fit a model to a scatter plot, and then everything is plotted on a single graph using matplotlib. I have annotated this code with comments, and have also attached the text document (see below) with the raw data I used for the fit. Note that you will want to place this file where your preferred IDE can access it. Physics students may find the template of this fitting code useful for other experiments they wish to conduct, as the process is very much the same. Load your raw data, sort the respective values into lists, and then fit a scatter plot of that data to a desired model. As always, feel free to use and modify this code as you see "fit".
 
 ```markdown
 import numpy as np
