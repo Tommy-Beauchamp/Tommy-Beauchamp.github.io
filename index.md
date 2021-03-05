@@ -190,5 +190,10 @@ f.close()
 ```
 [MuonLongData.txt](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/files/6077130/MuonLongData.txt)
 
+## Rock Paper Scissors
+
+This project is a simple game that includes some functions from different libraries and incorporates the use of a class to keep everything organized. There are also a few try and except portions to prevent the code from crashing, as it takes user input that needs to be of a specific type. The code starts by prompting the user for their name and the number of rounds they would like to play. The game begins with a countdown using sleep from the time package. The user selects one of the possible moves and the computer randomly generates a counter move. The moves are compared according to the rules of the game and the score from each round is kept. After all the rounds are played the final score and winner are presented. In the event of a tie, a series of tie breaker rounds are played until someone scores a point.
+
+
 
 ## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
