@@ -194,6 +194,174 @@ f.close()
 
 This project is a simple game that includes some functions from different libraries and incorporates the use of a class to keep everything organized. There are also a few try and except portions to prevent the code from crashing, as it takes user input that needs to be of a specific type. The code starts by prompting the user for their name and the number of rounds they would like to play. The game begins with a countdown using sleep from the time package. The user selects one of the possible moves and the computer randomly generates a counter move. The moves are compared according to the rules of the game and the score from each round is kept. After all the rounds are played the final score and winner are presented. In the event of a tie, a series of tie breaker rounds are played until someone scores a point.
 
+```markdown
+import random as rn
+import time
+import sys
+
+possible_choices = [1, 2, 3]
+i = 0
+player_score = 0
+computer_score = 0
+winner_found = False
+
+player_name = input("Enter Your Name: ")
+
+while True:
+    try:
+        rounds = int(input("How many rounds would you like to play?: "))
+        if rounds > 0:
+            break
+        else:
+            raise ValueError("Please pick a positive integer.")
+    except ValueError as ve:
+        print(ve)
+
+def player_move(player_choice):
+    if player_choice == 1:
+        player_choice = "Rock"
+    elif player_choice == 2:
+        player_choice = "Paper"
+    else:
+        player_choice = "Scissors"
+    return player_choice
+
+def computer_move(computer_choice):
+    if computer_choice == 1:
+        computer_choice = "Rock"
+    elif computer_choice == 2:
+        computer_choice = "Paper"
+    else:
+        computer_choice = "Scissors"
+    return computer_choice
+
+def game():
+    
+    user_input = -1
+
+    print("3...")
+    time.sleep(1)
+    print("2...")
+    time.sleep(1)
+    print("1...")
+    time.sleep(1)
+
+    print("Enter one of the follwing numbers: ")
+    while True:
+        try:
+            user_input = int(input("1. Rock     2. Paper     3. Scissors "))
+            if (user_input - 1) == possible_choices.index(user_input):
+                break
+        except ValueError:
+            print("Input must be an integer: '1' for Rock, '2' for Paper, '3' for Scissors")
+    return user_input
+
+def game_over(player_final_score, computer_final_score):
+    print("Final Score")
+    print("" + player_name + ": " + str(player_score) + "")
+    print("Computer: " + str(computer_score) + "")
+    if player_score > computer_score:
+        print("" + player_name + " Wins!")
+    else:
+        print("Computer Wins!")
+    return
+
+
+class Outcome:
+
+    def __init__ (self, pm, cm, ps, cs):
+        self.player = pm
+        self.computer = cm
+        self.player_score = ps
+        self.computer_score = cs
+
+    def outcome(self):
+
+        # Player chose Rock
+        if self.player == "Rock" and self.computer == "Rock":
+            print("" + player_name + " chose Rock and Computer chose Rock. No winner.")
+
+        elif self.player == "Rock" and self.computer == "Paper":
+            print("" + player_name + " chose Rock and Computer chose Paper. Paper covers Rock.")
+            print("Computer wins!")
+            self.computer_score += 1
+
+        elif self.player == "Rock" and self.computer == "Scissors":
+            print("" + player_name + " chose Rock and Computer chose Scissors. Rock beats Scissors")
+            print("" + player_name + " wins!")
+            self.player_score += 1
+
+        # Player chose Paper
+        elif self.player == "Paper" and self.computer == "Rock":
+            print("" + player_name + " chose Paper and Computer chose Rock. Paper covers Rock.")
+            print("" + player_name + " wins!")
+            self.player_score += 1
+
+        elif self.player == "Paper" and self.computer == "Paper":
+            print("" + player_name + " chose Paper and Computer chose Paper. No winner.")
+
+        elif self.player == "Paper" and self.computer == "Scissors":
+            print("" + player_name + " chose Paper and Computer chose Scissors. Scissors cut Paper")
+            print("Computer wins!")
+            self.computer_score += 1
+
+        # Player chose Scissors
+        elif self.player == "Scissors" and self.computer == "Rock":
+            print("" + player_name + " chose Scissors and Computer chose Rock. Rock beats Scissors.")
+            print("Computer wins!")
+            self.computer_score += 1
+
+        elif self.player == "Scissors" and self.computer == "Paper":
+            print("" + player_name + " chose Scissors and Computer chose Paper. Scissors cut Paper.")
+            print("" + player_name + " wins!")
+            self.player_score += 1
+
+        else:
+            print("" + player_name + " chose Scissors and Computer chose Scissors. No winner")
+
+    def score_p(self):
+        print("Player score is " + str(self.player_score))
+        return self.player_score
+
+    def score_c(self):
+        print("Computer score is " + str(self.computer_score))
+        return self.computer_score
+
+
+while i < rounds:
+    print("\n")
+    player_choice = game()
+    x = player_move(player_choice)
+    y = computer_move(rn.randint(1,3))
+
+    result = Outcome(x,y, player_score, computer_score)
+    print("\n")
+    result.outcome()
+    player_score = result.score_p()
+    computer_score = result.score_c()
+    i += 1
+
+    input("Press Enter to proceed: ")
+
+print("\n")
+while winner_found == False:
+    if player_score != computer_score:
+        game_over(player_score, computer_score)
+        winner_found = True
+    else:
+        print("Game is currently tied. Initializing tie breaker round.")
+        print("\n")
+        player_choice = game()
+        x = player_move(player_choice)
+        y = computer_move(rn.randint(1,3))
+
+        result = Outcome(x,y, player_score, computer_score)
+        print("\n")
+        result.outcome()
+        player_score = result.score_p()
+        computer_score = result.score_c()
+```
+
 
 
 ## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
