@@ -7,6 +7,7 @@ Hi there! My name is Tommy and I enjoy programming, with a particular interest i
 The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This method is often tedious, so a graphing calculator certainly comes in handy. Knowing what a function looks like graphically can also be a powerful tool for building intuitive understanding. The user specifies a function to graph, and then a domain over which they want to see the plot.
 
 ```markdown
+# Python code with syntax highlighting
 import math
 import matplotlib.pyplot as plt
 import numpy as np
