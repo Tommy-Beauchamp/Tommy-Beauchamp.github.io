@@ -104,6 +104,108 @@ plt.legend()
 plt.show()
 ```
 
+## Analytical Limit and Continuity Evaluation
+
+This project was an exciting trek into the Sympy library which also for symbolic maths to be performed by the computer as opposed to numerical calculations. This program contains a continuity check class which takes a function from the user, and a point to be checked for continuity. Using the limit calculation capabilities of the Sympy library, the left and right hand limits are calculated for the function and the properties of continuity are employed to classify the function as either continuous or discontinuous at the point. Furthermore, if the function possesses a discontinuity at the point, the program can classify it as a removable or nonremovable discontinuity. Finally, the function is graphed over a specified window, and the removable discontinuity is redefined if possible.
+
+```markdown
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sym
+import sys
+
+x = sym.Symbol('X')
+sym.init_printing(use_unicode=False, wrap_line=True)
+
+class Continuity_Check:
+
+    def __init__(self, func_variable, expression, limit_value):
+        self.x = func_variable
+        self.exp = expression
+        self.lim = limit_value
+
+    def func(self):
+        return (self.exp)
+
+    def func_continuity_test(self):
+
+        def func(self):
+            return (self.exp)
+
+        try:
+            d = func(self).subs(self.x, self.lim)
+        except ValueError:
+            print("Function does not exist at " + str(self.x) + " = " + str(self.lim) + ".")
+            d = "DNE"
+
+        print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) +
+              " from the left side is: ")  
+        print(sym.limit(func(self), self.x, self.lim, "-"))
+        a = sym.limit(func(self), self.x, self.lim, "-")
+
+        print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) + 
+            " from the right side is: ")
+        print(sym.limit(func(self), self.x, self.lim, "+"))
+        b = sym.limit(func(self), self.x, self.lim, "+")
+       
+        if a == b:
+            print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) + 
+                  " from both sides is: ")
+            print(sym.limit(func(self), self.x, self.lim, "+-"))
+            c = sym.limit(func(self), self.x, self.lim, "+-")
+
+        else:
+            print("The function: " + str(func(self)) + " has a nonremovable discontinuity at the point "
+                  + str(self.x) + " = " + str(self.lim) + ".")
+
+        if ((a == sym.oo) and (b == sym.oo)) or ((a == -1 * sym.oo) and (b == -1 * sym.oo)):
+            print("The function: " + str(func(self)) + " has a nonremovable discontinuity at the point "
+                  + str(self.x) + " = " + str(self.lim) + ".")
+
+        elif (a == b) and (str(c) != str(d)):
+            print("The function " + str(func(self)) + " has a removable discontinuity at the point "
+                  + str(self.x) + " = " + str(self.lim) + ".")
+
+            print("Redefine the function " + str(func(self)) + " to be " + str(c) + " at " + str(self.x) + " = " + str(self.lim) + ".")
+
+        elif (a == b) and (str(c) == str(d)):
+            print("The function " + str(func(self)) + " is continuous at " + str(self.x) + " = " + str(self.lim) + ".")
+
+        return d
+
+limit_value = 0
+r = Continuity_Check(x, 1/x, limit_value)
+graph = r.func()
+f_val = r.func_continuity_test()
+
+x_start = -9.99
+x_end = 10
+xDataLeft = np.arange(x_start, limit_value, 1)
+xDataRight = np.arange(limit_value + 1, x_end, 1)
+yDataLeft = []
+yDataRight = []
+for element in xDataLeft:
+    yDataLeft.append(graph.subs(x, element))
+
+for element in xDataRight:
+    yDataRight.append(graph.subs(x, element))
+
+plt.plot(xDataLeft, yDataLeft, 'b', label='Calculated Points')
+plt.plot(xDataRight, yDataRight, 'b')
+
+if (sym.limit(graph, x, limit_value, "+") == (sym.oo)) or (sym.limit(graph, x, limit_value, "+") == (-1 * (sym.oo))):
+    print("Cannot plot point due to infinite discontinuity")
+elif (sym.limit(graph, x, limit_value, "-") == (sym.oo)) or (sym.limit(graph, x, limit_value, "-") == (-1 * (sym.oo))):
+    print("Cannot plot point due to infinite discontinuity")
+else:
+    plt.plot(limit_value, sym.limit(graph, x, limit_value, "+-"), 'ro', label='Limit Value')
+        
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.legend()
+plt.show()
+```
+
 ## Experimental Physics Curve Fitting
 
 The following is a curve fitting code I wrote for an experiment I conducted to measure the lifetime of muons as they descend to the surface from Earth's upper atmosphere. This code utilizes scipy to fit a model to a scatter plot, and then everything is plotted on a single graph using matplotlib. I have annotated this code with comments, and have also attached the text document (see below) with the raw data I used for the fit. Note that you will want to place this file where your preferred IDE can access it. Physics students may find the template of this fitting code useful for other experiments they wish to conduct, as the process is very much the same. Load your raw data, sort the respective values into lists, and then fit a scatter plot of that data to a desired model. As always, feel free to use and modify this code as you see "fit".
@@ -360,107 +462,6 @@ while winner_found == False:
         result.outcome()
         player_score = result.score_p()
         computer_score = result.score_c()
-```
-## Analytical Limit and Continuity Evaluation
-
-This project was an exciting trek into the Sympy library which also for symbolic maths to be performed by the computer as opposed to numerical calculations. This program contains a continuity check class which takes a function from the user, and a point to be checked for continuity. Using the limit calculation capabilities of the Sympy library, the left and right hand limits are calculated for the function and the properties of continuity are employed to classify the function as either continuous or discontinuous at the point. Furthermore, if the function possesses a discontinuity at the point, the program can classify it as a removable or nonremovable discontinuity. Finally, the function is graphed over a specified window, and the removable discontinuity is redefined if possible.
-
-```markdown
-import matplotlib.pyplot as plt
-import numpy as np
-import sympy as sym
-import sys
-
-x = sym.Symbol('X')
-sym.init_printing(use_unicode=False, wrap_line=True)
-
-class Continuity_Check:
-
-    def __init__(self, func_variable, expression, limit_value):
-        self.x = func_variable
-        self.exp = expression
-        self.lim = limit_value
-
-    def func(self):
-        return (self.exp)
-
-    def func_continuity_test(self):
-
-        def func(self):
-            return (self.exp)
-
-        try:
-            d = func(self).subs(self.x, self.lim)
-        except ValueError:
-            print("Function does not exist at " + str(self.x) + " = " + str(self.lim) + ".")
-            d = "DNE"
-
-        print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) +
-              " from the left side is: ")  
-        print(sym.limit(func(self), self.x, self.lim, "-"))
-        a = sym.limit(func(self), self.x, self.lim, "-")
-
-        print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) + 
-            " from the right side is: ")
-        print(sym.limit(func(self), self.x, self.lim, "+"))
-        b = sym.limit(func(self), self.x, self.lim, "+")
-       
-        if a == b:
-            print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) + 
-                  " from both sides is: ")
-            print(sym.limit(func(self), self.x, self.lim, "+-"))
-            c = sym.limit(func(self), self.x, self.lim, "+-")
-
-        else:
-            print("The function: " + str(func(self)) + " has a nonremovable discontinuity at the point "
-                  + str(self.x) + " = " + str(self.lim) + ".")
-
-        if ((a == sym.oo) and (b == sym.oo)) or ((a == -1 * sym.oo) and (b == -1 * sym.oo)):
-            print("The function: " + str(func(self)) + " has a nonremovable discontinuity at the point "
-                  + str(self.x) + " = " + str(self.lim) + ".")
-
-        elif (a == b) and (str(c) != str(d)):
-            print("The function " + str(func(self)) + " has a removable discontinuity at the point "
-                  + str(self.x) + " = " + str(self.lim) + ".")
-
-            print("Redefine the function " + str(func(self)) + " to be " + str(c) + " at " + str(self.x) + " = " + str(self.lim) + ".")
-
-        elif (a == b) and (str(c) == str(d)):
-            print("The function " + str(func(self)) + " is continuous at " + str(self.x) + " = " + str(self.lim) + ".")
-
-        return d
-
-limit_value = 0
-r = Continuity_Check(x, 1/x, limit_value)
-graph = r.func()
-f_val = r.func_continuity_test()
-
-x_start = -9.99
-x_end = 10
-xDataLeft = np.arange(x_start, limit_value, 1)
-xDataRight = np.arange(limit_value + 1, x_end, 1)
-yDataLeft = []
-yDataRight = []
-for element in xDataLeft:
-    yDataLeft.append(graph.subs(x, element))
-
-for element in xDataRight:
-    yDataRight.append(graph.subs(x, element))
-
-plt.plot(xDataLeft, yDataLeft, 'b', label='Calculated Points')
-plt.plot(xDataRight, yDataRight, 'b')
-
-if (sym.limit(graph, x, limit_value, "+") == (sym.oo)) or (sym.limit(graph, x, limit_value, "+") == (-1 * (sym.oo))):
-    print("Cannot plot point due to infinite discontinuity")
-elif (sym.limit(graph, x, limit_value, "-") == (sym.oo)) or (sym.limit(graph, x, limit_value, "-") == (-1 * (sym.oo))):
-    print("Cannot plot point due to infinite discontinuity")
-else:
-    plt.plot(limit_value, sym.limit(graph, x, limit_value, "+-"), 'ro', label='Limit Value')
-        
-plt.xlabel("x")
-plt.ylabel("f(x)")
-plt.legend()
-plt.show()
 ```
 
 
