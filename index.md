@@ -106,7 +106,7 @@ plt.show()
 
 ## Analytical Limit and Continuity Evaluation
 
-This project was an exciting trek into the Sympy library which also for symbolic maths to be performed by the computer as opposed to numerical calculations. This program contains a continuity check class which takes a function from the user, and a point to be checked for continuity. Using the limit calculation capabilities of the Sympy library, the left and right hand limits are calculated for the function and the properties of continuity are employed to classify the function as either continuous or discontinuous at the point. Furthermore, if the function possesses a discontinuity at the point, the program can classify it as a removable or nonremovable discontinuity. Finally, the function is graphed over a specified window, and the removable discontinuity is redefined if possible.
+This project was an exciting trek into the Sympy library which allows for symbolic maths to be performed by the computer, as opposed to numerical calculations. This program contains a continuity check class, which takes an algebraic function from the user, and a point to be checked for continuity. Using the limit calculation capabilities of the Sympy library, the left and right hand limits are calculated for the function and the properties of continuity are employed to classify the function as either continuous or discontinuous at the point. Furthermore, if the function possesses a discontinuity at the point, the program classifies it as a removable or nonremovable discontinuity. Finally, the function is graphed over a specified window, and the removable discontinuity is redefined and plotted if possible.
 
 ```python
 import matplotlib.pyplot as plt
