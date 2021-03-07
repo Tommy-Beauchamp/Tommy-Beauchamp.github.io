@@ -173,15 +173,15 @@ class Continuity_Check:
 
         return d
 
-limit_value = 0
-r = Continuity_Check(x, 1/x, limit_value)
+limit_value = 2
+r = Continuity_Check(x, x**2, limit_value)
 graph = r.func()
 f_val = r.func_continuity_test()
 
 x_start = -9.99
 x_end = 10
-xDataLeft = np.arange(x_start, limit_value, 1)
-xDataRight = np.arange(limit_value + 1, x_end, 1)
+xDataLeft = np.arange(x_start, limit_value, 0.1)
+xDataRight = np.arange(limit_value + 0.1, x_end, 0.1)
 yDataLeft = []
 yDataRight = []
 for element in xDataLeft:
