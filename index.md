@@ -4,7 +4,7 @@ Hi there! My name is Tommy and I enjoy programming, with a particular interest i
 
 ## Function Graphing
 
-The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This method can be tedious so a graphing calculator certainly comes in handy. Knowing what a function graphically looks like can also be a powerful tool for building intuitive understanding. The user simply specifies a function to graph and then a domain over which they want to see the plot.
+The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This method is often tedious, so a graphing calculator certainly comes in handy. Knowing what a function looks like graphically can also be a powerful tool for building intuitive understanding. The user specifies a function to graph, and then a domain over which they want to see the plot.
 
 ```markdown
 import math
