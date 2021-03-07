@@ -36,7 +36,7 @@ When limits are first introduced informally, we aren't given the toolkit to eval
 
 The user specifies a function, an input value to approach, how many decimals they want to have their table go to (3 decimals in this case would be 0.1, 0.01, and 0.001 from the right of 0), and then a domain over which they want to graph the function. If the function possesses a discontinuity at the limit value, the code will recognize this and remove the point from the graphing process. The result prints the left and right hand limit values to the console and then shows a graph with either the limit value, or the left and right limits near the input of interest.
 
-```markdown
+```python
 import math
 import matplotlib.pyplot as plt
 import numpy as np
@@ -108,7 +108,7 @@ plt.show()
 
 This project was an exciting trek into the Sympy library which also for symbolic maths to be performed by the computer as opposed to numerical calculations. This program contains a continuity check class which takes a function from the user, and a point to be checked for continuity. Using the limit calculation capabilities of the Sympy library, the left and right hand limits are calculated for the function and the properties of continuity are employed to classify the function as either continuous or discontinuous at the point. Furthermore, if the function possesses a discontinuity at the point, the program can classify it as a removable or nonremovable discontinuity. Finally, the function is graphed over a specified window, and the removable discontinuity is redefined if possible.
 
-```markdown
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
@@ -210,7 +210,7 @@ plt.show()
 
 The following is a curve fitting code I wrote for an experiment I conducted to measure the lifetime of muons as they descend to the surface from Earth's upper atmosphere. This code utilizes scipy to fit a model to a scatter plot, and then everything is plotted on a single graph using matplotlib. I have annotated this code with comments, and have also attached the text document (see below) with the raw data I used for the fit. Note that you will want to place this file where your preferred IDE can access it. Physics students may find the template of this fitting code useful for other experiments they wish to conduct, as the process is very much the same. Load your raw data, sort the respective values into lists, and then fit a scatter plot of that data to a desired model. As always, feel free to use and modify this code as you see "fit".
 
-```markdown
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
@@ -296,7 +296,7 @@ f.close()
 
 This project is a simple game that includes some functions from different libraries and incorporates the use of a class to keep everything organized. There are also a few try and except portions to prevent the code from crashing, as it takes user input that needs to be of a specific type. The code starts by prompting the user for their name and the number of rounds they would like to play. The game begins with a countdown using sleep from the time package. The user selects one of the possible moves and the computer randomly generates a counter move. The moves are compared according to the rules of the game and the score from each round is kept. After all the rounds are played the final score and winner are presented. In the event of a tie, a series of tie breaker rounds are played until someone scores a point.
 
-```markdown
+```python
 import random as rn
 import time
 import sys
