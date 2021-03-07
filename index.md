@@ -4,7 +4,7 @@ Hi there! My name is Tommy and I enjoy programming, with a particular interest i
 
 ## Function Graphing
 
-The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This method can be tedious so a graphing calculator certainly comes in handy. Knowing what a function graphically looks like can also be a powerful tool for building intuitive understanding.
+The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This method can be tedious so a graphing calculator certainly comes in handy. Knowing what a function graphically looks like can also be a powerful tool for building intuitive understanding. The user simply specifies a function to graph and then a domain over which they want to see the plot.
 
 ```markdown
 import math
@@ -361,7 +361,107 @@ while winner_found == False:
         player_score = result.score_p()
         computer_score = result.score_c()
 ```
+## Analytical Limit and Continuity Evaluation
 
+This project was an exciting trek into the Sympy library which also for symbolic maths to be performed by the computer as opposed to numerical calculations. This program contains a continuity check class which takes a function from the user, and a point to be checked for continuity. Using the limit calculation capabilities of the Sympy library, the left and right hand limits are calculated for the function and the properties of continuity are employed to classify the function as either continuous or discontinuous at the point. Furthermore, if the function possesses a discontinuity at the point, the program can classify it as a removable or nonremovable discontinuity. Finally, the function is graphed over a specified window, and the removable discontinuity is redefined if possible.
+
+```markdown
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sym
+import sys
+
+x = sym.Symbol('X')
+sym.init_printing(use_unicode=False, wrap_line=True)
+
+class Continuity_Check:
+
+    def __init__(self, func_variable, expression, limit_value):
+        self.x = func_variable
+        self.exp = expression
+        self.lim = limit_value
+
+    def func(self):
+        return (self.exp)
+
+    def func_continuity_test(self):
+
+        def func(self):
+            return (self.exp)
+
+        try:
+            d = func(self).subs(self.x, self.lim)
+        except ValueError:
+            print("Function does not exist at " + str(self.x) + " = " + str(self.lim) + ".")
+            d = "DNE"
+
+        print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) +
+              " from the left side is: ")  
+        print(sym.limit(func(self), self.x, self.lim, "-"))
+        a = sym.limit(func(self), self.x, self.lim, "-")
+
+        print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) + 
+            " from the right side is: ")
+        print(sym.limit(func(self), self.x, self.lim, "+"))
+        b = sym.limit(func(self), self.x, self.lim, "+")
+       
+        if a == b:
+            print("Limit of " + str(func(self)) + " as " + str(self.x) + " approaches " + str(self.lim) + 
+                  " from both sides is: ")
+            print(sym.limit(func(self), self.x, self.lim, "+-"))
+            c = sym.limit(func(self), self.x, self.lim, "+-")
+
+        else:
+            print("The function: " + str(func(self)) + " has a nonremovable discontinuity at the point "
+                  + str(self.x) + " = " + str(self.lim) + ".")
+
+        if ((a == sym.oo) and (b == sym.oo)) or ((a == -1 * sym.oo) and (b == -1 * sym.oo)):
+            print("The function: " + str(func(self)) + " has a nonremovable discontinuity at the point "
+                  + str(self.x) + " = " + str(self.lim) + ".")
+
+        elif (a == b) and (str(c) != str(d)):
+            print("The function " + str(func(self)) + " has a removable discontinuity at the point "
+                  + str(self.x) + " = " + str(self.lim) + ".")
+
+            print("Redefine the function " + str(func(self)) + " to be " + str(c) + " at " + str(self.x) + " = " + str(self.lim) + ".")
+
+        elif (a == b) and (str(c) == str(d)):
+            print("The function " + str(func(self)) + " is continuous at " + str(self.x) + " = " + str(self.lim) + ".")
+
+        return d
+
+limit_value = 0
+r = Continuity_Check(x, 1/x, limit_value)
+graph = r.func()
+f_val = r.func_continuity_test()
+
+x_start = -9.99
+x_end = 10
+xDataLeft = np.arange(x_start, limit_value, 1)
+xDataRight = np.arange(limit_value + 1, x_end, 1)
+yDataLeft = []
+yDataRight = []
+for element in xDataLeft:
+    yDataLeft.append(graph.subs(x, element))
+
+for element in xDataRight:
+    yDataRight.append(graph.subs(x, element))
+
+plt.plot(xDataLeft, yDataLeft, 'b', label='Calculated Points')
+plt.plot(xDataRight, yDataRight, 'b')
+
+if (sym.limit(graph, x, limit_value, "+") == (sym.oo)) or (sym.limit(graph, x, limit_value, "+") == (-1 * (sym.oo))):
+    print("Cannot plot point due to infinite discontinuity")
+elif (sym.limit(graph, x, limit_value, "-") == (sym.oo)) or (sym.limit(graph, x, limit_value, "-") == (-1 * (sym.oo))):
+    print("Cannot plot point due to infinite discontinuity")
+else:
+    plt.plot(limit_value, sym.limit(graph, x, limit_value, "+-"), 'ro', label='Limit Value')
+        
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.legend()
+plt.show()
+```
 
 
 ## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
