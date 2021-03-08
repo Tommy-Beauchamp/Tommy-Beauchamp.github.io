@@ -2,6 +2,12 @@
 
 Hi there! My name is Tommy and I enjoy programming, with a particular interest in object-oriented programming. Here you will find a mix of various personal projects I have created. I deeply enjoy mathematics and am trying to create algorithms that solve different problems concerning limits, derivatives, and integration. These codes will also show graphs where possible to help a user visualize the calculated quantities. There are also some other projects that I have put here just for fun. Have a look! You are welcome to use and modify any of these codes however you wish.
 
+## Senior Project Physics 2019-2020
+
+For my senior project I worked with Dr. Lloyd Bumm and his research group at the University of Oklahoma. I picked up the vibrational analysis project which had previously been built up by two students prior to me, Elizabeth Moffett and Jake Burcham. My role was to modify existing Matlab code to continuously acquire data with a DT-8904 DAQ attached to an S-13 Geophone seismometer. Once that experiment was setup, I was tasked with updating our data acquisition system using a UEIPAC 300-1G-02-08-00-PA cube. This involved modifying source code in C to continuously acquire data, and simultaneously save data files every hour. For troubleshooting, the binary files in C were transferred to Matlab where they could be viewed graphically or with a table. The following PDF summarizes the work I did from Fall 2019 to Spring 2020, although I continued to work on the project until December 2020, and still correspond to troubleshooting inquiries.
+
+[Beauchamp_Capstone.2020_05_11_FINAL.pdf](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/files/6103366/Beauchamp_Capstone.2020_05_11_FINAL.pdf)
+
 ## Function Graphing
 
 The preliminary section in most calculus textbooks reviews the student on the ways to graph a function via point plotting. This method is often tedious, so a graphing calculator certainly comes in handy. Knowing what a function looks like graphically can also be a powerful tool for building intuitive understanding. The user specifies a function to graph, and then a domain over which they want to see the plot.
@@ -457,6 +463,3 @@ while winner_found == False:
         player_score = result.score_p()
         computer_score = result.score_c()
 ```
-
-
-## Example of how to Embed a link in text : [editor on GitHub](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/edit/main/index.md)
