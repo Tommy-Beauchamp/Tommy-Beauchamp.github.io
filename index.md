@@ -2,6 +2,8 @@
 
 Hi there! My name is Tommy and I enjoy programming, with a particular interest in object-oriented programming. Here you will find a mix of various personal projects I have created. I deeply enjoy mathematics and am trying to create algorithms that solve different problems concerning limits, derivatives, and integration. These codes will also show graphs where possible to help a user visualize the calculated quantities. There are also some other projects that I have put here just for fun. Have a look! You are welcome to use and modify any of these codes however you wish.
 
+[Robert Beauchamp Resume.pdf](https://github.com/Tommy-Beauchamp/Tommy-Beauchamp.github.io/files/6138488/Robert.Beauchamp.Resume.pdf)
+
 ## Senior Project Physics 2019-2020
 
 For my senior project I worked with Dr. Lloyd Bumm and his research group at the University of Oklahoma. I picked up the vibrational analysis project which had previously been built up by students prior to me. My initial role was to modify existing Matlab code to continuously acquire data with a DT-8904 DAQ attached to an S-13 Geophone seismometer. Once that experiment was setup, I was tasked with updating our data acquisition system using a UEIPAC 300-1G-02-08-00-PA cube. This involved modifying source code in C to continuously acquire data, and simultaneously save data files every hour. For troubleshooting, the binary files in C were transferred to Matlab where they could be viewed graphically or with a table. The following PDF summarizes the work I did from Fall 2019 to Spring 2020, although I continued to work on the project until December 2020 and still respond to troubleshooting inquiries.
