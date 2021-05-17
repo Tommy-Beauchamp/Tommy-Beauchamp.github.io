@@ -218,6 +218,81 @@ plt.legend()
 plt.show()
 ```
 
+## Secant Line to Tangent Line Visualization
+
+This code was a very satisfying challenge to surmount. Using the animation library in matplotlib, I was able to animate a sine wave with a line attached to points on the curve. In its current state, the curve and line need to be specifically hardcoded and I am pondering how to make the code more robust. Nonetheless, I think this animation offers a simple but insightful visualization of the limit definition of the derivative. Feel free to tweak anything here, and I hope this serves as a nice visualization tool and perhaps a helpful introduction to animation with matplotlib.
+
+```python
+# Python code with syntax highlighting
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+import sympy as sym
+
+fig, ax = plt.subplots()
+
+x1, y1 = [], []
+x2, y2 = [], []
+yData = []
+test_data = []
+zero_data = []
+slope = []
+
+point1, = ax.plot([], [], marker='o', color="black", ms=7.5)
+point2, = ax.plot([], [], marker='o', color="green", ms=7.5)
+line1, = ax.plot([], [], marker='', color="blue", ms=1)
+line2, = ax.plot([], [], marker='', color="red", ms=1)
+
+def func_1(x):
+    return np.sin(x)
+
+x_graph = np.linspace(0, np.pi, num=50)
+y_graph = func_1(x_graph)
+
+xData = np.linspace(0, np.pi, num=50)
+x2 = np.linspace(0, np.pi, num=50)
+
+for data in xData:
+    yData.append(np.sqrt(3)*3*data/(2*np.pi))
+
+for data in x2:
+    y2.append(np.sin(data))
+
+def func(x):
+    return np.array([abs(np.sin(2*x))])
+
+def generator_func(x):
+    return np.array([(-1*abs(2*x-(np.pi))+ np.pi)])
+
+def circular_rotation(angle):
+    return np.array([xData*np.cos(0.5*angle), xData*np.sin(0.5*angle) + yData])
+
+def init():
+    ax.set_xlim(-0.1, np.pi + 0.1)
+    ax.set_ylim(-0.1, np.pi/2 + 0.1)
+    line1.set_data([x2], [y2])
+    line2.set_data([xData], [yData])
+    point1.set_data(np.pi/3, np.sqrt(3)/2)
+    return line1, line2, point1, point2
+
+def update(input):
+    y1 = func(input)
+    x1 = generator_func(input)
+    point2.set_data([x1], [y1])
+    slope = (((np.sqrt(3)/2) - y1)/((np.pi/3) - x1))
+    yData = []
+    for data in xData:
+        yData.append(slope*(data - (np.pi/3)) + np.sqrt(3)/2)
+    line2.set_data([xData], [yData])
+    return line1, line2, point1, point2
+
+anim = FuncAnimation(fig, update, frames=np.linspace(0, np.pi, num=200),
+                     init_func = init, interval=30, repeat=True, blit=True)
+
+plt.show()
+```
+
 ## Experimental Physics Curve Fitting
 
 The following is a curve fitting code I wrote for an experiment I conducted to measure the lifetime of muons as they descend to the surface from Earth's upper atmosphere. This code utilizes scipy to fit a model to a scatter plot, and then everything is plotted on a single graph using matplotlib. I have annotated this code with comments, and have also attached the text document (see below) with the raw data I used for the fit. Note that you will want to place this file where your preferred IDE can access it. Physics students may find the template of this fitting code useful for other experiments they wish to conduct, as the process is very much the same. Load your raw data, sort the respective values into lists, and then fit a scatter plot of that data to a desired model. As always, feel free to use and modify this code as you see "fit".
